@@ -352,6 +352,7 @@ export class VoiceConnection extends EventEmitter {
 	 * @param packet - The received `VOICE_STATE_UPDATE` packet
 	 */
 	private addStatePacket(packet: GatewayVoiceStateUpdateDispatchData) {
+		this.configureNetworking();
 		this.packets.state = packet;
 
 		if (typeof packet.self_deaf !== 'undefined') this.joinConfig.selfDeaf = packet.self_deaf;
